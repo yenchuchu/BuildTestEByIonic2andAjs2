@@ -21096,3 +21096,10 @@ sub {
   text-align: center;
   padding-top: 5%;
 }
+
+.list-md .item-block .item-inner,
+.item-md.item-block .item-inner,
+.list-md > .item-block:first-child,
+.list-md > .item-wrapper:first-child .item-block {
+  border-bottom: none !important;
+}

@@ -6,7 +6,9 @@ import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
 import { HomePage } from '../pages/testgetjson/testgetjson';
 
-import { DataService } from '../pages/test-english/data.service';
+// import {Ng2PaginationModule} from 'ng2-pagination';
+
+// import { DataService } from '../pages/test-english/data.service';
 import { TestenglIonicPage } from '../pages/test-english/test-english';
 
 @NgModule({
@@ -20,6 +22,7 @@ import { TestenglIonicPage } from '../pages/test-english/test-english';
   ],
   imports: [
     IonicModule.forRoot(MyApp)
+    // Ng2PaginationModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -31,7 +34,7 @@ import { TestenglIonicPage } from '../pages/test-english/test-english';
     HomePage
   ],
   providers: [
-    DataService
+    // DataService
   ]
 })
 export class AppModule {}

@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {Http} from '@angular/http';
 import {NavController} from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
+import { DataService } from './data.service';
 
 
 @Component({
@@ -12,7 +14,7 @@ export class TestenglIonicPage {
 	questions: Object[]; 
 	correct: number;
 
-  	constructor(public navCtrl: NavController,http: Http) {
+  	constructor(public navCtrl: NavController,http: Http, public alertCtrl: AlertController) {
     	this.http = http;
         this.http.get("assets/data/test.json")
             .subscribe(data =>{
@@ -29,7 +31,7 @@ export class TestenglIonicPage {
 
 	}
 
-	check() {
+	check() { 
 		this.correct = 0;
 		for (let i = 0; i < this.questions.length; i ++){
 		  if(this.questions[i]['choiced'] == this.questions[i]['answer']){
@@ -40,6 +42,13 @@ export class TestenglIonicPage {
 		    this.questions[i]['status'] = "incorrect";
 		  }
 		}
+
+		let alert = this.alertCtrl.create({
+	      title: 'Your result:',
+	      subTitle: 'You have ' + this.correct + ' sentences correct',
+	      buttons: ['OK']
+	    });
+	    alert.present();
 
 	}
 }

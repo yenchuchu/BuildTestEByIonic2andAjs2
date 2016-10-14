@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-  <button ion-button menuToggle>
+    <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
   </button>
     <ion-title>
@@ -8,32 +8,25 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
- 
+
 <ion-content padding>
- 
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <span class="badge">{{item.id}}. {{item.content}}</span>
-      <div *ngIf="item.status" >
-         <span *ngIf="item.status=='correct'" style="color:green;">{{item.status}}</span>
-         <span *ngIf="item.status=='incorrect'" style="color:red;">{{item.status}}</span>
-      </div> 
 
-      <ion-list>
-        <ion-item *ngFor="let choice of item.option">
-        <div class="checkbox" >
-          <input type="radio" (click)="saveStatus(item,choice.asw)" class="choose" name="choose_{{item.id}}" id="">
-          <label for="">{{choice.choose}}</label>  
-        </div>
- 
-        </ion-item>
-
-      </ion-list>
- 
+  <div *ngFor="let item of items">
+    <ion-item>      
+        <span class="badge">{{item.id}}. {{item.content}}</span>
+        <div *ngIf="item.status">
+          <span *ngIf="item.status=='correct'" style="color:green;">{{item.status}}</span>
+          <span *ngIf="item.status=='incorrect'" style="color:red;">{{item.status}}</span>
+        </div>      
     </ion-item>
- 
-  </ion-list>
+    <ion-list radio-group >     
+      <ion-item *ngFor="let choice of item.option; let i= index;">
+        <ion-radio (click)="saveStatus(item,choice.asw)"></ion-radio>
+        <ion-label>{{choice.choose}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
   <button ion-button color="secondary" (click)="check()">Check answer </button> {{correct}}
 
 </ion-content>
- 
